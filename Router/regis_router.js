@@ -190,11 +190,12 @@ regis_router.post('/select-package', verifyToken, async (req, res) => {
 
     const gen_unique_link = randomString(10).toUpperCase();
 
+    
     // ✅ ดึงเลขล่าสุดเฉพาะ city_code นั้น ๆ
     const select_last_id = `
         SELECT leader_user_id 
         FROM application_groups 
-        WHERE LEFT(leader_user_id, 2) = '25' 
+        WHERE LEFT(leader_user_id, 2) = '26' 
           AND RIGHT(leader_user_id, CHAR_LENGTH(?)) = ? 
         ORDER BY leader_user_id DESC 
         LIMIT 1
@@ -210,20 +211,19 @@ regis_router.post('/select-package', verifyToken, async (req, res) => {
             });
         }
 
-        // ถ้ายังไม่มีรหัสของ city นี้ -> เริ่ม 000001
+   
         let nextNumStr = '000001';
 
         if (results.length > 0) {
-            const lastId = results[0].leader_user_id; // เช่น 25000001CM
+            const lastId = results[0].leader_user_id;  
 
-            // ตัดเอาเลข 6 หลักกลาง ๆ ระหว่าง '25' กับ city_code
-            const numPart = lastId.slice(2, lastId.length - city_code.length); // => '000001'
+             const numPart = lastId.slice(2, lastId.length - city_code.length);  
 
             const nextNum = (parseInt(numPart, 10) || 0) + 1;
-            nextNumStr = String(nextNum).padStart(6, '0'); // => '000002'
+            nextNumStr = String(nextNum).padStart(6, '0');  
         }
 
-        const gen_leader_id = `25${nextNumStr}${city_code}`; // เช่น 25000002CM
+        const gen_leader_id = `26${nextNumStr}${city_code}`;  
 
         const insert_application_group = `
             INSERT INTO application_groups 
