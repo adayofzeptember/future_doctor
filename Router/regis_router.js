@@ -631,7 +631,7 @@ regis_router.get('/get-user-address', verifyToken, (req, res) => {
 
     const { user_id } = req.query;
 
-    const query = "SELECT address FROM registrations WHERE create_id = ?";
+    const query = "SELECT address FROM registrations WHERE create_id = ? ";
     db_TGAT.query(query, [user_id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
