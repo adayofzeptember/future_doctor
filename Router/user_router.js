@@ -5,8 +5,6 @@ const verifyToken = require('../function/token');
 const { format } = require('date-fns');
 const app = express();
 
-
-
 users_router.get('/me', verifyToken, (req, res) => {
     const userIdToken = req.tokenData.userId; // Extract userId from token
 
@@ -225,6 +223,7 @@ users_router.put('/update_user/:id', verifyToken, (req, res) => {
 
 users_router.get('/profile', verifyToken, (req, res) => {
     const userIdToken = req.tokenData.userId;
+console.log(userIdToken);
 
     const get_profile_query = `
     SELECT * FROM registrations WHERE create_id = ?`;
@@ -236,7 +235,7 @@ users_router.get('/profile', verifyToken, (req, res) => {
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
         }
         if (results.length === 0) {
-            return res.status(401).json({ message: 'ไม่พบข้อมูล' });
+            return res.status(401).json({ message: 'ไม่พบข้อมูลการสมัครสอบ' });
         }
 
         const userInfo = results[0];

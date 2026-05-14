@@ -93,14 +93,12 @@ auth_router.post('/login', (req, res) => {
             db_TGAT.query(insert_user_login, [user.id_data_role, formattedDate, "ip", userAgentRaw], (err2) => {
                 if (err2) {
                     console.error('Error inserting into user_log_login:', err2);
-                    // ❗ ตรงนี้ผมไม่ return error ให้ user นะ จะให้ response สำเร็จไปก่อน
-                    // ถ้าอยากให้ error logging กระทบ response ต้อง return res.status(500) ตรงนี้
+   
                 }
 
-                // ✅ ส่ง response หลัง insert สำเร็จ (หรือแม้ insert fail ก็ยังส่ง login success)
-                return res.status(200).json({
+                 return res.status(200).json({
                     success: true,
-                    message: 'เข้าสู่ระบบเสร็จสิ้น: ' + user_name,
+                    message: 'เข้าสู่ระบบเสร็จสิ้น',
                     statusCode: 1,
                     ip: ip,
                     user_info: {

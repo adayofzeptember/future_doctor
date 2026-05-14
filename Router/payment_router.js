@@ -51,5 +51,4 @@ payment_router.get('/gbpay/check-status', verifyToken, (req, res) => {
 });
 
 
-
 module.exports = payment_router;
