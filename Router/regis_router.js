@@ -596,7 +596,6 @@ regis_router.get('/group/members', (req, res) => {
 
 });
 
-//*
 regis_router.post('/group/find-member', (req, res) => {
     const { group_id, national_id } = req.body;
 
@@ -625,7 +624,6 @@ regis_router.post('/group/find-member', (req, res) => {
         });
     });
 });
-//*
 
 regis_router.get('/get-user-address', verifyToken, (req, res) => {
 

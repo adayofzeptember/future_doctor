@@ -1,9 +1,9 @@
 const express = require("express");
 const dotenv = require('dotenv');
-const auth_router = require('./Router/auth');
-const regis_router = require('./Router/regis_router')
-const payment_router = require('./Router/payment_router');
-const user_router = require('./Router/user_router')
+const auth_router = require('./router/auth_router');
+const regis_router = require('./router/regis_router')
+const payment_router = require('./router/payment_router');
+const user_router = require('./router/user_router')
 const db_bewise = require('./db/db_connect')
 const cors = require("cors");
 const app = express();
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/ping', (req, res) => {
-    res.send('pong ด');
+    res.send('pong index');
 });
 
 app.get('/db-test', (req, res) => {
@@ -35,9 +35,12 @@ app.get('/db-test', (req, res) => {
 
 app.use('/auth', auth_router);
 app.use('/regis', regis_router);
+app.use('/payment', payment_router);
+app.use('/users', user_router);
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`🚀 Server running: port ${PORT}`);
 });
+

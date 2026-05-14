@@ -1,24 +1,26 @@
+
 const mysql = require('mysql2');
 require('dotenv').config();
 
-const databaseFutureDoctor = mysql.createPool({
+const db_bewise = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   charset: 'utf8',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
 
-databaseFutureDoctor.getConnection((err, connection) => {
+db_bewise.getConnection((err, connection) => {
   if (err) {
-    console.error('❌❌❌ could not connect to TGAT database ❌❌❌');
-    console.error(err);
-    process.exit(1);
+    console.error('❌❌❌ not connect to database ❌❌❌', err);
+    return;
   }
 
-  console.log('✅ Database ✅');
-
+  console.log('✅ Connected to database ✅');
   connection.release();
 });
 
-module.exports = databaseFutureDoctor;
+module.exports = db_bewise;

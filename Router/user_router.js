@@ -4,9 +4,7 @@ const users_router = express.Router();
 const verifyToken = require('../function/token');
 const { format } = require('date-fns');
 const app = express();
-// const router = express.Router();
- 
-//*
+
 
 
 users_router.get('/me', verifyToken, (req, res) => {
@@ -393,99 +391,6 @@ users_router.get('/log_login', verifyToken, (req, res) => {
     });
 });
 
-// users_router.put('/profile', verifyToken, (req, res) => {
-//     const userIdToken = req.tokenData.userId;
-
-
-//     const {
-//         firstname,
-//         lastname,
-//         nationalId,
-//         phone,
-//         gradeLevel,
-//         major,
-//         school,
-//         address,
-//         subdistrict,
-//         district,
-//         province,
-//         zipcode
-//     } = req.body;
-//     console.log(req.body);
-//     let fullAddress;
-//     if (address || subdistrict || district || province || zipcode) {
-//         fullAddress = `${address || ''}, ${subdistrict || ''}, ${district || ''}, ${province || ''}, ${zipcode || ''}`;
-//     }
-
-//     let fields = [];
-//     let values = [];
-
-//     if (nationalId) {
-//         fields.push("idcard = ?");
-//         values.push(nationalId);
-//     }
-//     if (firstname) {
-//         fields.push("firstname = ?");
-//         values.push(firstname);
-//     }
-//     if (lastname) {
-//         fields.push("lastname = ?");
-//         values.push(lastname);
-//     }
-//     if (phone) {
-//         fields.push("phone = ?");
-//         values.push(phone);
-//     }
-//     if (gradeLevel) {
-//         fields.push("class_level = ?");
-//         values.push(gradeLevel);
-//     }
-//     if (major) {
-//         fields.push("subject_line = ?");
-//         values.push(major);
-//     }
-//     if (school) {
-//         fields.push("school = ?");
-//         values.push(school);
-//     }
-//     if (fullAddress) {
-//         fields.push("address = ?");
-//         values.push(fullAddress);e
-//     }
-
-
-//     if (fields.length === 0) {
-//         return res.status(400).json({
-//             message: "ไม่พบข้อมูลสำหรับอัปเดท"
-//         });
-//     }
-
-
-//     const update_regis = `
-//     UPDATE registrations 
-//     SET ${fields.join(", ")} 
-//     WHERE create_id = ?
-//   `;
-
-//     values.push(userIdToken);
-
-//     db_TGAT.query(update_regis, values, (err, results) => {
-//         if (err) {
-//             console.error('Database error:', err);
-//             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
-//         }
-
-//         // if (results.affectedRows === 0) {
-//         //     return res.status(404).json({ message: 'ไม่พบข้อมูลที่จะแก้ไข' });
-//         // }
-
-//         res.status(200).json({
-//             status: 'success',
-//             message: 'อัปเดทข้อมูลเสร็จสิ้น',
-//             results
-//         });
-//     });
-// });
 
 
 module.exports = users_router;

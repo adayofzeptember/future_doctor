@@ -31,6 +31,7 @@ payment_router.get('/gbpay/check-status', verifyToken, (req, res) => {
             if (results.length === 0) {
                 return res.status(200).json({
                     status_code: '00',
+                    id_customer: id_customer,
                     message: 'ยังไม่จ่าย',
                 });
             } else if (results[0].status === '00' || results.length > 0) {
@@ -40,6 +41,7 @@ payment_router.get('/gbpay/check-status', verifyToken, (req, res) => {
 
                 return res.status(200).json({
                     status_code: '01',
+                    id_customer: id_customer,
                     message: 'จ่ายแล้ว',
                     gbpReferenceNo: lastPart,
                 });

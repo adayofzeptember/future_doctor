@@ -11,6 +11,10 @@ const { format } = require('date-fns');
 const auth_router = express.Router();
 const app = express();
 
+auth_router.get('/ping', (req, res) => {
+    res.send('pong auth');
+});
+
 auth_router.post('/login', (req, res) => {
     const { user_name, user_password } = req.body;
 
@@ -56,7 +60,7 @@ auth_router.post('/login', (req, res) => {
                     message: 'รหัสผ่านไม่ถูกต้อง'
                 });
             }
-
+       
             const token = jwt.sign(
                 { userId: user.id_data_role },
                 process.env.JWT_SECRET,
