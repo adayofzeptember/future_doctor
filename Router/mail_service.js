@@ -1,21 +1,23 @@
 const nodemailer = require('nodemailer');
 
 async function sendMailRegister(email, link, idcustomer, mailVerify, check) {
+ 
+  
   try {
     const transporter = nodemailer.createTransport({
-      port: 587,
-      host: "smtp.gmail.com",
-      secure: false,
+      port: 465,
+      host: "smtp.resend.com",
+      secure: true,
       auth: {
-        user: "registrar@bewisegroup.co",
-        pass: "kscz luvd crxz hcpf",
+        user: "resend",
+        pass: "re_fCBVDJbQ_BwNsBD4hGjHrxuj2BLGkC3xs",
       },
     });
 
     let mailOptions = {
-      from: 'BeWise Academy <noreply@bewisegroup.co>',
+      from: 'BeWise Education <no-reply@future.bewise-global.com>',
       to: email,
-      subject: 'ยืนยันอีเมล (Email) TGAT READY 2025',
+      subject: 'ยืนยันอีเมล (Email) Future Doctor Summit 2026',
       text: 'Hello ',
       html: `<!doctypehtml>
   <html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -223,8 +225,8 @@ async function sendMailRegister(email, link, idcustomer, mailVerify, check) {
               <tr>
                 <td style="padding:0;margin:0" align="center">
                   <table cellpadding="0" cellspacing="0" role="none"
-                    style="mso-table-lspace:0;mso-table-rspace:0;border-collapse:collapse;border-spacing:0;background-color:#ed1651;width:600px"
-                    class="cp" align="center" bgcolor="#ed1651">
+                    style="mso-table-lspace:0;mso-table-rspace:0;border-collapse:collapse;border-spacing:0;background-color:#2a8fbe;width:600px"
+                    class="cp" align="center" bgcolor="#2a8fbe">
                     <tr>
                       <td style="padding:0;margin:0" align="left">
                         <table cellpadding="0" cellspacing="0" role="none"
@@ -237,10 +239,10 @@ async function sendMailRegister(email, link, idcustomer, mailVerify, check) {
                                 width="100%">
                                 <tr>
                                   <td style="padding:0;margin:0;font-size:0" align="center"><a
-                                      href="https://tgat-ready.bewise-academy.com/images/AW_Confirm_Email_TGAT-01.jpg"
+                                      href="https://future.bewise-global.com/images/AW_Confirm_Email_future-01.jpg"
                                       style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#666;font-size:14px"
                                       target="_blank"><img alt="" height="300"
-                                        src="https://tgat-ready.bewise-academy.com/images/AW_Confirm_Email_TGAT-01.jpg"
+                                        src="https://future.bewise-global.com/images/AW_Confirm_Email_future-01.jpg"
                                         style="display:block;border:0;outline:0;text-decoration:none;-ms-interpolation-mode:bicubic"
                                         width="600" class="adapt-img"></a>
                               </table>
@@ -269,7 +271,7 @@ async function sendMailRegister(email, link, idcustomer, mailVerify, check) {
                                 <tr>
                                   <td style="padding:0;margin:0;padding-top:10px;padding-bottom:10px;font-size:0"
                                     align="center"><img alt="" height="85"
-                                      src="https://tgat-ready.bewise-academy.com/images/AW_Confirm_Email.png"
+                                      src="https://future.bewise-global.com/images/AW_Confirm_Email.png"
                                       style="display:block;border:0;outline:0;text-decoration:none;-ms-interpolation-mode:bicubic"
                                       width="85">
                                 <tr>
@@ -284,7 +286,7 @@ async function sendMailRegister(email, link, idcustomer, mailVerify, check) {
                                     <p
                                       style='margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:roboto,"helvetica neue",helvetica,arial,sans-serif;line-height:21px;color:#333;font-size:14px'>
                                       คุณได้รับข้อความนี้เนื่องจากอีเมลของน้องได้ถูกใช้สำหรับลงทะเบียนเข้าร่วมโครงการ
-                                      TGAT READY 2025
+                                      Future Doctor Summit 2026
                                       โปรดคลิกปุ่มด้านล่างเพื่อยืนยันอีเมลและรับรองว่าน้องเป็นเจ้าของบัญชีนี้จริง
                                 <tr>
                                   <td style="padding:0;margin:0;padding-bottom:5px;padding-top:10px" align="center">
@@ -294,9 +296,9 @@ async function sendMailRegister(email, link, idcustomer, mailVerify, check) {
                                 <tr>
                                   <td style="padding:0;margin:0;padding-top:10px;padding-bottom:10px" align="center">
                                     <span class="ci"
-                                      style="border-style:solid;border-color:#2cb543;background:#ed1651;border-width:0;display:inline-block;border-radius:10px;width:auto"><a
+                                      style="border-style:solid;border-color:#2cb543;background:#2a8fbe;border-width:0;display:inline-block;border-radius:10px;width:auto"><a
                                         href="${link}?idcustomer=${idcustomer}&mailVerify=${mailVerify}&check=${check}"
-                                        style='mso-style-priority:100!important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#fff;font-size:20px;padding:10px 30px 10px 30px;display:inline-block;background:#ed1651;border-radius:10px;font-family:roboto,"helvetica neue",helvetica,arial,sans-serif;font-weight:400;font-style:normal;line-height:24px;width:auto;text-align:center;mso-padding-alt:0;mso-border-alt:10px solid #ed1651;padding-left:30px;padding-right:30px'
+                                        style='mso-style-priority:100!important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#fff;font-size:20px;padding:10px 30px 10px 30px;display:inline-block;background:#2a8fbe;border-radius:10px;font-family:roboto,"helvetica neue",helvetica,arial,sans-serif;font-weight:400;font-style:normal;line-height:24px;width:auto;text-align:center;mso-padding-alt:0;mso-border-alt:10px solid #2a8fbe;padding-left:30px;padding-right:30px'
                                         target="_blank" class="ch">ยืนยันอีเมล คลิก!</a></span>
 
         
@@ -416,19 +418,19 @@ async function sendMailRegister(email, link, idcustomer, mailVerify, check) {
 async function sendMailRegisSinglePass(email, id, name, package, province, examDate, price, date) {
   try {
     const transporter = nodemailer.createTransport({
-      port: 587,
-      host: "smtp.gmail.com",
-      secure: false,
+      port: 465,
+      host: "smtp.resend.com",
+      secure: true,
       auth: {
-        user: "info-bewise@bewisegroup.co",
-        pass: "cbby igbo vqom xyme",
+        user: "resend",
+        pass: "re_fCBVDJbQ_BwNsBD4hGjHrxuj2BLGkC3xs",
       },
     });
 
     let mailOptions = {
-      from: 'BeWise Academy <noreply@bewisegroup.co>',
+      from: 'BeWise Education <no-reply@future.bewise-global.com>',
       to: email,
-      subject: `ยืนยันข้อมูลการสมัคร TGAT READY 2025 ของคุณ ${name}`,
+      subject: `ยืนยันข้อมูลการสมัคร Future Doctor Summit 2026 ของคุณ ${name}`,
       text: 'Hello ',
       html: `<!doctype html>
 <html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -673,9 +675,9 @@ async function sendMailRegisSinglePass(email, id, name, package, province, examD
                       mso-table-rspace: 0;
                       border-collapse: collapse;
                       border-spacing: 0;
-                      background-color: #ed1651;
+                      background-color: #2a8fbe;
                       width: 600px;
-                    " class="cp" align="center" bgcolor="#ed1651">
+                    " class="cp" align="center" bgcolor="#2a8fbe">
                                     <tr>
                                         <td style="padding: 0; margin: 0" align="left">
                                             <table cellpadding="0" cellspacing="0" role="none" style="
@@ -697,7 +699,7 @@ async function sendMailRegisSinglePass(email, id, name, package, province, examD
                                                             <tr>
                                                                 <td style="padding: 0; margin: 0; font-size: 0"
                                                                     align="center">
-                                                                    <a href="https://tgat-ready.bewise-academy.com/images/AW_Confirm_Email_TGAT-01.jpg"
+                                                                    <a href="https://future.bewise-global.com/images/AW_Confirm_Email_future-01.jpg"
                                                                         style="
                                         -webkit-text-size-adjust: none;
                                         -ms-text-size-adjust: none;
@@ -706,7 +708,7 @@ async function sendMailRegisSinglePass(email, id, name, package, province, examD
                                         color: #666;
                                         font-size: 14px;
                                       " target="_blank"><img alt="" height="300"
-                                                                            src="https://tgat-ready.bewise-academy.com/images/AW_Confirm_Email_TGAT-01.jpg"
+                                                                            src="https://future.bewise-global.com/images/AW_Confirm_Email_future-01.jpg"
                                                                             style="
                                           display: block;
                                           border: 0;
@@ -795,7 +797,7 @@ async function sendMailRegisSinglePass(email, id, name, package, province, examD
                                                 font-size: 14px;
                                               ">
                                                                         สวัสดีครับ/ค่ะ คุณ
-                                                                        <strong style="color: #ed1651;">${name}</strong>
+                                                                        <strong style="color: #2a8fbe;">${name}</strong>
                                                             <tr>
                                                                 <td style="
                                                     padding: 0;
@@ -817,7 +819,7 @@ async function sendMailRegisSinglePass(email, id, name, package, province, examD
                                                       color: #333;
                                                       font-size: 14px;
                                                     ">
-                                                                        ขอบคุณที่สมัครเข้าร่วมโครงการ TGAT READY 2025.  
+                                                                        ขอบคุณที่สมัครเข้าร่วมโครงการ Future Doctor Summit 2026.  
                                                                         กับ BeWise Academy
                                                                         <br>นี่คือรายละเอียดการสมัครของน้อง
                                                                         โปรดตรวจสอบความถูกต้องอีกครั้งก่อนดำเนินการชำระเงิน
@@ -825,17 +827,17 @@ async function sendMailRegisSinglePass(email, id, name, package, province, examD
                                                                         <div style="text-align: left; font-size: 14px;">
                                                                         <strong>สรุปข้อมูลการสมัคร:</strong>
                                                                         <br><br>
-                                                                        • รหัสประจำตัวผู้สมัคร: <span style="color: #ed1651;">TG${id}</span>
+                                                                        • รหัสประจำตัวผู้สมัคร: <span style="color: #2a8fbe;">TG${id}</span>
                                                                         <br>
-                                                                        • ชื่อ-นามสกุล: <span style="color: #ed1651;">${name}</span>
+                                                                        • ชื่อ-นามสกุล: <span style="color: #2a8fbe;">${name}</span>
                                                                         <br>
-                                                                        • แพ็กเกจที่สมัคร: <span style="color: #ed1651;">${package}</span>
+                                                                        • แพ็กเกจที่สมัคร: <span style="color: #2a8fbe;">${package}</span>
                                                                         <br>
-                                                                        • จังหวัดที่สมัคร: <span style="color: #ed1651;">${province}</span>
+                                                                        • จังหวัดที่สมัคร: <span style="color: #2a8fbe;">${province}</span>
                                                                         <br>
-                                                                        • วัน-เวลาติวและสอบ: <span style="color: #ed1651;">${examDate}</span>
+                                                                        • วัน-เวลาติวและสอบ: <span style="color: #2a8fbe;">${examDate}</span>
                                                                         <br>
-                                                                        • ยอดที่ต้องชำระ: <span style="color: #ed1651;">${price}.00 บาท</span>
+                                                                        • ยอดที่ต้องชำระ: <span style="color: #2a8fbe;">${price}.00 บาท</span>
                                                                         <hr>
                                                                         หากข้อมูลทั้งหมดถูกต้อง โปรดดำเนินการชำระเงินเพื่อทำการจองที่นั่งให้เสร็จสมบูรณ์
                                                                         </div>
@@ -849,12 +851,12 @@ async function sendMailRegisSinglePass(email, id, name, package, province, examD
                                                                     <span class="ci" style="
                                                             border-style: solid;
                                                             border-color: #2cb543;
-                                                            background: #ed1651;
+                                                            background: #2a8fbe;
                                                             border-width: 0;
                                                             display: inline-block;
                                                             border-radius: 10px;
                                                             width: auto;
-                                                          "><a href="https://tgat-ready.bewise-academy.com/payment" style="
+                                                          "><a href="https://future.bewise-global.com/payment" style="
                                                               mso-style-priority: 100 !important;
                                                               text-decoration: none;
                                                               -webkit-text-size-adjust: none;
@@ -865,7 +867,7 @@ async function sendMailRegisSinglePass(email, id, name, package, province, examD
                                                               padding: 10px 30px
                                                                 10px 30px;
                                                               display: inline-block;
-                                                              background: #ed1651;
+                                                              background: #2a8fbe;
                                                               border-radius: 10px;
                                                               font-family:
                                                                 roboto,
@@ -880,7 +882,7 @@ async function sendMailRegisSinglePass(email, id, name, package, province, examD
                                                               text-align: center;
                                                               mso-padding-alt: 0;
                                                               mso-border-alt: 10px
-                                                                solid #ed1651;
+                                                                solid #2a8fbe;
                                                               padding-left: 30px;
                                                               padding-right: 30px;
                                                             " target="_blank" class="ch">ดำเนินการชำระเงิน
@@ -1249,18 +1251,19 @@ async function sendMailRegisSinglePass(email, id, name, package, province, examD
 async function sendMailRegisGroup(email, id, name, package, province, examDate, price, date, link) {
   try {
     const transporter = nodemailer.createTransport({
-      port: 587,
-      host: "smtp.gmail.com",
-      secure: false,
+      port: 465,
+      host: "smtp.resend.com",
+      secure: true,
       auth: {
-        user: "info-bewise@bewisegroup.co",
-        pass: "cbby igbo vqom xyme",
+        user: "resend",
+        pass: "re_fCBVDJbQ_BwNsBD4hGjHrxuj2BLGkC3xs",
       },
     });
+
     let mailOptions = {
-      from: 'BeWise Academy <noreply@bewisegroup.co>',
+      from: 'BeWise Education <no-reply@future.bewise-global.com>',
       to: email,
-      subject: 'ยืนยันข้อมูลการสมัคร TGAT READY 2025',
+      subject: 'ยืนยันข้อมูลการสมัคร Future Doctor Summit 2026',
       text: 'Hello ',
       html: `<!doctype html>
 <html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -1270,7 +1273,7 @@ async function sendMailRegisGroup(email, id, name, package, province, examDate, 
 <meta content="IE=edge" http-equiv="X-UA-Compatible" />
 <meta content="telephone=no" name="format-detection" />
 <title>
-    Register TGAT READY</title><!--[if (mso 16)
+    Register Future Doctor Summit 2026</title><!--[if (mso 16)
     ]><style type="text/css">
       a {
         text-decoration: none;
@@ -1505,9 +1508,9 @@ async function sendMailRegisGroup(email, id, name, package, province, examDate, 
                       mso-table-rspace: 0;
                       border-collapse: collapse;
                       border-spacing: 0;
-                      background-color: #ed1651;
+                      background-color: #2a8fbe;
                       width: 600px;
-                    " class="cp" align="center" bgcolor="#ed1651">
+                    " class="cp" align="center" bgcolor="#2a8fbe">
                                     <tr>
                                         <td style="padding: 0; margin: 0" align="left">
                                             <table cellpadding="0" cellspacing="0" role="none" style="
@@ -1529,7 +1532,7 @@ async function sendMailRegisGroup(email, id, name, package, province, examDate, 
                                                             <tr>
                                                                 <td style="padding: 0; margin: 0; font-size: 0"
                                                                     align="center">
-                                                                    <a href="https://tgat-ready.bewise-academy.com/images/AW_Confirm_Email_TGAT-01.jpg"
+                                                                    <a href="https://future.bewise-global.com/images/AW_Confirm_Email_future-01.jpg"
                                                                         style="
                                         -webkit-text-size-adjust: none;
                                         -ms-text-size-adjust: none;
@@ -1538,7 +1541,7 @@ async function sendMailRegisGroup(email, id, name, package, province, examDate, 
                                         color: #666;
                                         font-size: 14px;
                                       " target="_blank"><img alt="" height="300"
-                                                                            src="https://tgat-ready.bewise-academy.com/images/AW_Confirm_Email_TGAT-01.jpg"
+                                                                            src="https://future.bewise-global.com/images/AW_Confirm_Email_future-01.jpg"
                                                                             style="
                                           display: block;
                                           border: 0;
@@ -1626,7 +1629,7 @@ async function sendMailRegisGroup(email, id, name, package, province, examDate, 
                                                 font-size: 14px;
                                               ">
                                                                         สวัสดีครับ/ค่ะ คุณ
-                                                                        <strong style="color: #ed1651;">${name}</strong>
+                                                                        <strong style="color: #2a8fbe;">${name}</strong>
                                                             <tr>
                                                                 <td style="
                                                     padding: 0;
@@ -1648,30 +1651,30 @@ async function sendMailRegisGroup(email, id, name, package, province, examDate, 
                                                       color: #333;
                                                       font-size: 14px;  
                                                     ">
-                                                                        ขอบคุณที่สมัครเข้าร่วมโครงการ TGAT READY 2025
+                                                                        ขอบคุณที่สมัครเข้าร่วมโครงการ Future Doctor Summit 2026
                                                                         กับ BeWise Academy
                                                                         <br>นี่คือรายละเอียดกลุ่มของน้อง และขั้นตอนต่อไปที่ต้องทำ
                                                                         <hr>
                                                                         <div style="text-align: left; font-size: 14px; font-family: roboto,&quot;helvetica neue&quot;,helvetica, arial, sans-serif;">
                                                                         <strong>สรุปข้อมูลการสมัคร:</strong>
                                                                         <br><br>
-                                                                        • รหัสประจำตัวผู้สมัคร: <span style="color: #ed1651;">TG${id}</span>
+                                                                        • รหัสประจำตัวผู้สมัคร: <span style="color: #2a8fbe;">TG${id}</span>
                                                                         <br>
-                                                                        • ชื่อ-นามสกุล: <span style="color: #ed1651;">${name}</span>
+                                                                        • ชื่อ-นามสกุล: <span style="color: #2a8fbe;">${name}</span>
                                                                         <br>
-                                                                        • แพ็กเกจที่สมัคร: <span style="color: #ed1651;">${package}</span>
+                                                                        • แพ็กเกจที่สมัคร: <span style="color: #2a8fbe;">${package}</span>
                                                                         <br>
-                                                                        • จังหวัดที่สมัคร: <span style="color: #ed1651;">${province}</span>
+                                                                        • จังหวัดที่สมัคร: <span style="color: #2a8fbe;">${province}</span>
                                                                         <br>
-                                                                        • วัน-เวลาติวและสอบ: <span style="color: #ed1651;">${examDate}</span>
+                                                                        • วัน-เวลาติวและสอบ: <span style="color: #2a8fbe;">${examDate}</span>
                                                                         <br>
-                                                                        • ยอดที่ต้องชำระ: <span style="color: #ed1651;">${price}.00 บาท</span>
+                                                                        • ยอดที่ต้องชำระ: <span style="color: #2a8fbe;">${price}.00 บาท</span>
                                                                         <hr>
                                                                         <strong>ขั้นตอนสำคัญถัดไป:</strong>
                                                                         <br><br>
                                                                         <strong>1. คัดลอกลิงก์ด้านล่างนี้</strong>
                                                                          แล้วส่งให้เพื่อนสมาชิกในกลุ่มทุกคนเพื่อกรอกข้อมูลส่วนตัว<br>
-                                                                        <span style="background-color: #f0f0f0; border-radius: 3px; color: #333;"><a href="https://tgat-ready.bewise-academy.com/group_join/${link}" target="_blank" rel="noopener noreferrer">https://tgat-ready.bewise-academy.com/group_join/${link}</a></span>
+                                                                        <span style="background-color: #f0f0f0; border-radius: 3px; color: #333;"><a href="https://future.bewise-global.com/group_join/${link}" target="_blank" rel="noopener noreferrer">https://future.bewise-global.com/group_join/${link}</a></span>
                                                                         <br>
                                                                         <strong style="color: #ff1100;">2. ย้ำเตือนเพื่อนๆ</strong> ให้กรอกข้อมูลของตนเองให้เสร็จสิ้น <strong style="color: #ff1100;">ภายใน 24 ชั่วโมง</strong>
                                                                         <br><br>
@@ -2014,22 +2017,22 @@ async function sendMailRegisGroup(email, id, name, package, province, examDate, 
   }
 }
 
-
 async function sendMailGroupJoin(email, id, headName, name, province, examDate, date) {
   try {
     const transporter = nodemailer.createTransport({
-      port: 587,
-      host: "smtp.gmail.com",
-      secure: false,
+      port: 465,
+      host: "smtp.resend.com",
+      secure: true,
       auth: {
-        user: "info-bewise@bewisegroup.co",
-        pass: "cbby igbo vqom xyme",
+        user: "resend",
+        pass: "re_fCBVDJbQ_BwNsBD4hGjHrxuj2BLGkC3xs",
       },
     });
+
     let mailOptions = {
-      from: 'BeWise Academy <noreply@bewisegroup.co>',
+      from: 'BeWise Education <no-reply@future.bewise-global.com>',
       to: email,
-      subject: `ยืนยันการลงทะเบียน (ในกลุ่มของ ${headName}) สำหรับโครงการ TGAT READY 2025`,
+      subject: `ยืนยันการลงทะเบียน (ในกลุ่มของ ${headName}) สำหรับโครงการ Future Doctor Summit 2026`,
       text: 'Hello ',
       html: `<!doctype html>
 <html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -2039,7 +2042,7 @@ async function sendMailGroupJoin(email, id, headName, name, province, examDate, 
 <meta content="IE=edge" http-equiv="X-UA-Compatible" />
 <meta content="telephone=no" name="format-detection" />
 <title>
-    TGAT READY 2025</title><!--[if (mso 16)
+    Future Doctor Summit 2026</title><!--[if (mso 16)
     ]><style type="text/css">
       a {
         text-decoration: none;
@@ -2274,9 +2277,9 @@ async function sendMailGroupJoin(email, id, headName, name, province, examDate, 
                       mso-table-rspace: 0;
                       border-collapse: collapse;
                       border-spacing: 0;
-                      background-color: #ed1651;
+                      background-color: #2a8fbe;
                       width: 600px;
-                    " class="cp" align="center" bgcolor="#ed1651">
+                    " class="cp" align="center" bgcolor="#2a8fbe">
                                     <tr>
                                         <td style="padding: 0; margin: 0" align="left">
                                             <table cellpadding="0" cellspacing="0" role="none" style="
@@ -2298,7 +2301,7 @@ async function sendMailGroupJoin(email, id, headName, name, province, examDate, 
                                                             <tr>
                                                                 <td style="padding: 0; margin: 0; font-size: 0"
                                                                     align="center">
-                                                                    <a href="https://tgat-ready.bewise-academy.com/images/AW_Confirm_Email_TGAT-01.jpg"
+                                                                    <a href="https://future.bewise-global.com/images/AW_Confirm_Email_future-01.jpg"
                                                                         style="
                                         -webkit-text-size-adjust: none;
                                         -ms-text-size-adjust: none;
@@ -2307,7 +2310,7 @@ async function sendMailGroupJoin(email, id, headName, name, province, examDate, 
                                         color: #666;
                                         font-size: 14px;
                                       " target="_blank"><img alt="" height="300"
-                                                                            src="https://tgat-ready.bewise-academy.com/images/AW_Confirm_Email_TGAT-01.jpg"
+                                                                            src="https://future.bewise-global.com/images/AW_Confirm_Email_future-01.jpg"
                                                                             style="
                                           display: block;
                                           border: 0;
@@ -2396,7 +2399,7 @@ async function sendMailGroupJoin(email, id, headName, name, province, examDate, 
                                                 font-size: 14px;
                                               ">
                                                                         สวัสดีครับ/ค่ะ คุณ
-                                                                        <strong style="color: #ed1651;">${name}</strong>
+                                                                        <strong style="color: #2a8fbe;">${name}</strong>
                                                             <tr>
                                                                 <td style="
                                                     padding: 0;
@@ -2418,10 +2421,10 @@ async function sendMailGroupJoin(email, id, headName, name, province, examDate, 
                                                       color: #333;
                                                       font-size: 14px;
                                                     ">
-                                                                        ขอบคุณที่สมัครเข้าร่วมโครงการ TGAT READY 2025
+                                                                        ขอบคุณที่สมัครเข้าร่วมโครงการ Future Doctor Summit 2026
                                                                         กับ BeWise Academy
                                                                         <br>นี่คือรายละเอียดการสมัคร
-                                                                        ในกลุ่มของ <span style="color: #ed1651;">${headName}</span> เรียบร้อยแล้ว
+                                                                        ในกลุ่มของ <span style="color: #2a8fbe;">${headName}</span> เรียบร้อยแล้ว
                                                                         <hr>
                                                                         <div style="text-align: left; font-size: 14px; font-family:
                                                   roboto,
@@ -2429,13 +2432,13 @@ async function sendMailGroupJoin(email, id, headName, name, province, examDate, 
                                                   helvetica, arial, sans-serif;">
                                                                         <strong>ข้อมูลการลงทะเบียน:</strong>
                                                                         <br><br>
-                                                                        • หมายเลขกลุ่ม: <span style="color: #ed1651;">TG${id}</span>
+                                                                        • หมายเลขกลุ่ม: <span style="color: #2a8fbe;">TG${id}</span>
                                                                         <br>
-                                                                        • ชื่อ-นามสกุล: <span style="color: #ed1651;">${name}</span>
+                                                                        • ชื่อ-นามสกุล: <span style="color: #2a8fbe;">${name}</span>
                                                                         <br>
-                                                                        • จังหวัดที่สมัคร: <span style="color: #ed1651;">${province}</span>
+                                                                        • จังหวัดที่สมัคร: <span style="color: #2a8fbe;">${province}</span>
                                                                         <br>
-                                                                        • วัน-เวลาติวและสอบ: <span style="color: #ed1651;">${examDate}</span>
+                                                                        • วัน-เวลาติวและสอบ: <span style="color: #2a8fbe;">${examDate}</span>
                                                                         <hr>
                                                                         ในส่วนของน้อง <strong>การลงทะเบียนข้อมูลได้เสร็จสมบูรณ์แล้วครับ/ค่ะ!</strong><br>
                                                                         หลังจากนี้ <strong>ผู้สมัครหลัก/คุณครู</strong> จะเป็นผู้ดำเนินการชำระเงินค่าสมัครสำหรับสมาชิกทุกคนในกลุ่ม<br><br>
@@ -2774,21 +2777,20 @@ async function sendMailGroupJoin(email, id, headName, name, province, examDate, 
   }
 }
 
-
 async function sendMailOTP(email, otp, name, date) {
   try {
     const transporter = nodemailer.createTransport({
-      port: 587,
-      host: "smtp.gmail.com",
-      secure: false,
+      port: 465,
+      host: "smtp.resend.com",
+      secure: true,
       auth: {
-        user: "registrar@bewisegroup.co",
-        pass: "kscz luvd crxz hcpf",
+        user: "resend",
+        pass: "re_fCBVDJbQ_BwNsBD4hGjHrxuj2BLGkC3xs",
       },
     });
 
     let mailOptions = {
-      from: 'BeWise Academy <noreply@bewisegroup.co>',
+      from: 'BeWise Education <no-reply@future.bewise-global.com>',
       to: email,
       subject: 'รีเซ็ทรหัสผ่าน [BeWise]',
       text: 'Hello ',
@@ -2800,7 +2802,7 @@ async function sendMailOTP(email, otp, name, date) {
 <meta content="IE=edge" http-equiv="X-UA-Compatible" />
 <meta content="telephone=no" name="format-detection" />
 <title>
-    TGAT READY 2025 - Forgot-Password</title><!--[if (mso 16)
+    Future Doctor Summit 2026 - Forgot-Password</title><!--[if (mso 16)
     ]><style type="text/css">
       a {
         text-decoration: none;
@@ -3035,9 +3037,9 @@ async function sendMailOTP(email, otp, name, date) {
                       mso-table-rspace: 0;
                       border-collapse: collapse;
                       border-spacing: 0;
-                      background-color: #ed1651;
+                      background-color: #2a8fbe;
                       width: 600px;
-                    " class="cp" align="center" bgcolor="#ed1651">
+                    " class="cp" align="center" bgcolor="#2a8fbe">
                                     <tr>
                                         <td style="padding: 0; margin: 0" align="left">
                                             <table cellpadding="0" cellspacing="0" role="none" style="
@@ -3059,7 +3061,7 @@ async function sendMailOTP(email, otp, name, date) {
                                                             <tr>
                                                                 <td style="padding: 0; margin: 0; font-size: 0"
                                                                     align="center">
-                                                                    <a href="https://tgat-ready.bewise-academy.com/images/AW_Confirm_Email_TGAT-01.jpg"
+                                                                    <a href="https://future.bewise-global.com/images/AW_Confirm_Email_future-01.jpg"
                                                                         style="
                                         -webkit-text-size-adjust: none;
                                         -ms-text-size-adjust: none;
@@ -3068,7 +3070,7 @@ async function sendMailOTP(email, otp, name, date) {
                                         color: #666;
                                         font-size: 14px;
                                       " target="_blank"><img alt="" height="300"
-                                                                            src="https://tgat-ready.bewise-academy.com/images/AW_Confirm_Email_TGAT-01.jpg"
+                                                                            src="https://future.bewise-global.com/images/AW_Confirm_Email_future-01.jpg"
                                                                             style="
                                           display: block;
                                           border: 0;
@@ -3157,7 +3159,7 @@ async function sendMailOTP(email, otp, name, date) {
                                                 font-size: 14px;
                                               ">
                                                                         สวัสดีครับ/ค่ะ คุณ
-                                                                        <strong style="color: #ed1651;">${name}</strong>
+                                                                        <strong style="color: #2a8fbe;">${name}</strong>
                                                             <tr>
                                                                 <td style="
                                                     padding: 0;
@@ -3179,10 +3181,10 @@ async function sendMailOTP(email, otp, name, date) {
                                                       color: #333;
                                                       font-size: 14px;
                                                     ">
-                                                              คุณได้ขอรีเซ็ตรหัสผ่านสำหรับระบบ TGAT READY 2025
+                                                              คุณได้ขอรีเซ็ตรหัสผ่านสำหรับระบบ Future Doctor Summit 2026
                                                               <br>กรุณาใช้รหัสยืนยันด้านล่างนี้เพื่อดำเนินการต่อ
                                                               <hr>
-                                                              <div style="text-align: center; font-size: 24px; font-weight: bold; color: #ed1651; background-color: #f5f5f5; padding: 15px; margin: 20px 0; border-radius: 5px; letter-spacing: 3px;">
+                                                              <div style="text-align: center; font-size: 24px; font-weight: bold; color: #2a8fbe; background-color: #f5f5f5; padding: 15px; margin: 20px 0; border-radius: 5px; letter-spacing: 3px;">
                                                               ${otp}
                                                               </div>
                                                               <p style="text-align: center; font-size: 12px; color: #666; margin: 10px 0;">

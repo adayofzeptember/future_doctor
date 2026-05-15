@@ -1,5 +1,5 @@
 const express = require('express');
-const db_TGAT = require('../db/db_connect');
+const db_FutureDoctor = require('../db/db_connect');
 const regis_router = express.Router();
 const verifyToken = require('../function/token');
 const { randomString } = require('../function/random_string');
@@ -51,7 +51,7 @@ regis_router.post('/', verifyToken, async (req, res) => {
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
-    db_TGAT.query(
+    db_FutureDoctor.query(
         insert_regis,
         [
             leader_id,
@@ -101,7 +101,7 @@ regis_router.post('/', verifyToken, async (req, res) => {
             } else {
                 // ✅ สมัครสอบกลุ่ม
                 const getLink = `SELECT * FROM application_groups WHERE leader_user_id = ?`;
-                db_TGAT.query(getLink, [leader_id], (err, resultLink) => {
+                db_FutureDoctor.query(getLink, [leader_id], (err, resultLink) => {
                     if (err) {
                         console.error('Error get unique_link : ', err);
                         return res.status(500).json({
@@ -138,7 +138,7 @@ regis_router.post('/', verifyToken, async (req, res) => {
 regis_router.get('/packages', verifyToken, (req, res) => {
     setTimeout(() => {
         const get_profile_query = "select * from packages";
-        db_TGAT.query(get_profile_query, (err, results) => {
+        db_FutureDoctor.query(get_profile_query, (err, results) => {
             if (err) {
                 console.error('Database error:', err);
                 return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -160,7 +160,7 @@ regis_router.get('/check-package-selection', verifyToken, (req, res) => {
     const { user_id } = req.query;
 
     const query = "select applicant_code, package_code, leader_user_id, unique_link ,create_date from application_groups where applicant_code = ?";
-    db_TGAT.query(query, [user_id], (err, results) => {
+    db_FutureDoctor.query(query, [user_id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -201,7 +201,7 @@ regis_router.post('/select-package', verifyToken, async (req, res) => {
         LIMIT 1
     `;
 
-    db_TGAT.query(select_last_id, [city_code, city_code], (err, results) => {
+    db_FutureDoctor.query(select_last_id, [city_code, city_code], (err, results) => {
         if (err) {
             console.error('Error DB: ', err);
             return res.status(500).json({
@@ -231,7 +231,7 @@ regis_router.post('/select-package', verifyToken, async (req, res) => {
             VALUES (?, ?, ?, ?, ?)
         `;
 
-        db_TGAT.query(
+        db_FutureDoctor.query(
             insert_application_group,
             [gen_leader_id, package_code, 'PENDING_MEMBERS', gen_unique_link, applicant_code],
             (err2) => {
@@ -258,7 +258,7 @@ regis_router.get('/check-id', verifyToken, (req, res) => {
     const { id } = req.query;
 
     const query = "select idcard from registrations where idcard = ?";
-    db_TGAT.query(query, [id], (err, results) => {
+    db_FutureDoctor.query(query, [id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -284,7 +284,7 @@ regis_router.get('/check-registration-status', verifyToken, (req, res) => {
     const { user_id } = req.query;
 
     const query = "select create_id from registrations where create_id = ?";
-    db_TGAT.query(query, [user_id], (err, results) => {
+    db_FutureDoctor.query(query, [user_id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -312,7 +312,7 @@ regis_router.get('/group/deadline', verifyToken, (req, res) => {
     const { user_id } = req.query;
 
     const query = "select create_date from application_groups where applicant_code = ?";
-    db_TGAT.query(query, [user_id], (err, results) => {
+    db_FutureDoctor.query(query, [user_id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -356,7 +356,7 @@ regis_router.get('/group/info/:uniquelink', (req, res) => {
         LEFT JOIN registrations r ON ag.applicant_code = r.create_id
         WHERE ag.unique_link = ?
     `;
-    db_TGAT.query(query, [uniquelink], (err, results) => {
+    db_FutureDoctor.query(query, [uniquelink], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -385,7 +385,7 @@ regis_router.get('/check-id-exists', (req, res) => {
     }
     const id = Buffer.from(encodedId, 'base64').toString('utf8');
     const query = "select idcard from registrations where idcard = ?";
-    db_TGAT.query(query, [id], (err, results) => {
+    db_FutureDoctor.query(query, [id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -431,7 +431,7 @@ regis_router.post('/group/join', async (req, res) => {
         (user_id, group_id, idcard, firstname, lastname, phone, email_register, class_level, subject_line, school, create_id) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-    db_TGAT.query(
+    db_FutureDoctor.query(
         insert_regisJoin,
         [
             leader_user_id, // userID
@@ -483,7 +483,7 @@ regis_router.post('/group/track-view', async (req, res) => {
     const formattedDate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
     const get_totalView = "SELECT total_views FROM group_stats WHERE leader_user_id = ?";
 
-    db_TGAT.query(get_totalView, [leader_id], (err, results) => {
+    db_FutureDoctor.query(get_totalView, [leader_id], (err, results) => {
         if (err) {
             console.error('Error get total_views from group_stats: ', err);
             return res.status(500).json({
@@ -500,7 +500,7 @@ regis_router.post('/group/track-view', async (req, res) => {
                 (leader_user_id, unique_link, total_views, create_datetime) 
                 VALUES (?, ?, ?, ?)
             `;
-            db_TGAT.query(insertNew, [leader_id, unique_link, 1, formattedDate], (err) => {
+            db_FutureDoctor.query(insertNew, [leader_id, unique_link, 1, formattedDate], (err) => {
                 if (err) {
                     console.error('Error inserting new row: ', err);
                     return res.status(500).json({
@@ -524,7 +524,7 @@ regis_router.post('/group/track-view', async (req, res) => {
                 SET total_views = ?
                 WHERE leader_user_id = ?
             `;
-            db_TGAT.query(updateView, [newViews, leader_id], (err) => {
+            db_FutureDoctor.query(updateView, [newViews, leader_id], (err) => {
                 if (err) {
                     console.error('Error updating total_views: ', err);
                     return res.status(500).json({
@@ -547,7 +547,7 @@ regis_router.get('/group/share-stats', (req, res) => {
     const { leader_id } = req.query;
 
     const query = "SELECT total_views FROM group_stats WHERE leader_user_id = ?";
-    db_TGAT.query(query, [leader_id], (err, results) => {
+    db_FutureDoctor.query(query, [leader_id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -573,7 +573,7 @@ regis_router.get('/group/members', (req, res) => {
     const { user_id, leader_id } = req.query;
 
     const query = "SELECT firstname, lastname, phone, email_register,create_id, create_datetime FROM registrations WHERE user_id = ? AND group_id = ? ";
-    db_TGAT.query(query, [user_id, leader_id], (err, results) => {
+    db_FutureDoctor.query(query, [user_id, leader_id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -600,7 +600,7 @@ regis_router.post('/group/find-member', (req, res) => {
     const { group_id, national_id } = req.body;
 
     const query = "SELECT * FROM registrations WHERE group_id = ? AND idcard = ?";
-    db_TGAT.query(query, [group_id, national_id], (err, results) => {
+    db_FutureDoctor.query(query, [group_id, national_id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -630,7 +630,7 @@ regis_router.get('/get-user-address', verifyToken, (req, res) => {
     const { user_id } = req.query;
 
     const query = "SELECT address FROM registrations WHERE create_id = ? ";
-    db_TGAT.query(query, [user_id], (err, results) => {
+    db_FutureDoctor.query(query, [user_id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -661,7 +661,7 @@ regis_router.get('/get-payment-status', (req, res) => {
         WHERE applicant_code = ? 
           AND status = 'COMPLETED'`;
 
-    db_TGAT.query(query, [user_id], (err, results) => {
+    db_FutureDoctor.query(query, [user_id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -713,7 +713,7 @@ FROM (
     SELECT 'UD', 0
 ) AS seat_data`;
 
-    db_TGAT.query(query, (err, results) => {
+    db_FutureDoctor.query(query, (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -753,7 +753,7 @@ regis_router.get('/group/members/print', (req, res) => {
 
     from registrations WHERE user_id = ? AND group_id = ?`;
 
-    db_TGAT.query(query, [user_id, leader_id], (err, results) => {
+    db_FutureDoctor.query(query, [user_id, leader_id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -793,7 +793,7 @@ regis_router.get('/ticket/print', (req, res) => {
 
     from registrations WHERE user_id = ? AND create_id = ?`;
 
-    db_TGAT.query(query, [leader_id, member_id], (err, results) => {
+    db_FutureDoctor.query(query, [leader_id, member_id], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });

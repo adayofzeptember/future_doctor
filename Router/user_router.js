@@ -1,5 +1,5 @@
 const express = require('express');
-const db_TGAT = require('../db/db_connect');
+const db_FutureDoctor = require('../db/db_connect');
 const users_router = express.Router();
 const verifyToken = require('../function/token');
 const { format } = require('date-fns');
@@ -35,7 +35,7 @@ users_router.get('/me', verifyToken, (req, res) => {
     WHERE mod_customer.id_customer = ?`;
 
 
-    db_TGAT.query(get_profile_query, [userIdToken], (err, results) => {
+    db_FutureDoctor.query(get_profile_query, [userIdToken], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -92,7 +92,7 @@ users_router.put('/me', verifyToken, (req, res) => {
     WHERE mod_customer.id_customer = ?`;
 
 
-    db_TGAT.query(get_profile_query, [userIdToken], (err, results) => {
+    db_FutureDoctor.query(get_profile_query, [userIdToken], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -135,7 +135,7 @@ users_router.put('/update_user/:id', verifyToken, (req, res) => {
 
     const query_check_addres = 'SELECT id_user FROM user_address WHERE id_user = ?';
 
-    db_TGAT.query(query_check_addres, [userId], (err, resultCheck) => {
+    db_FutureDoctor.query(query_check_addres, [userId], (err, resultCheck) => {
         if (err) {
             console.error('UPDATE ERROR --->', err.message);
             return res.status(500).json({ message: 'Internal Server Error get iduser' });
@@ -152,14 +152,14 @@ users_router.put('/update_user/:id', verifyToken, (req, res) => {
                     postcode = ?, 
                     telephone = ?
                 WHERE id_user = ?`;
-            db_TGAT.query(query_update_address, [address, district, amphur, province, postcode, telephone, userId], (err, resultUpdate) => {
+            db_FutureDoctor.query(query_update_address, [address, district, amphur, province, postcode, telephone, userId], (err, resultUpdate) => {
                 if (err) {
                     console.error('UPDATE user_address ERROR --->', err.message);
                     return res.status(500).json({ message: 'Internal Server Error during address update' });
                 }
                 const query_update_modcus = `UPDATE mod_customer SET forename = ?, surename = ?, telephone = ? WHERE id_customer = ?`;
                 const values = [firstname, lastname, telephone, userId];
-                db_TGAT.query(query_update_modcus, values, (err, resultInsert_mc) => {
+                db_FutureDoctor.query(query_update_modcus, values, (err, resultInsert_mc) => {
                     if (err) {
                         console.error('UPDATE mod_customer ERROR --->', err.message);
                         return res.status(500).json({ message: 'Internal Server Error during mod_customer update' });
@@ -187,7 +187,7 @@ users_router.put('/update_user/:id', verifyToken, (req, res) => {
                 (id_user, address, district, amphur, province, postcode, telephone) 
                 VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
-            db_TGAT.query(query_insert_address, [userId, address, district, amphur, province, postcode, telephone], (err, resultInsert) => {
+            db_FutureDoctor.query(query_insert_address, [userId, address, district, amphur, province, postcode, telephone], (err, resultInsert) => {
                 if (err) {
                     console.error('INSERT user_address ERROR --->', err.message);
                     return res.status(500).json({ message: 'Internal Server Error INSERT user_address ERROR' });
@@ -195,7 +195,7 @@ users_router.put('/update_user/:id', verifyToken, (req, res) => {
                     const query_update_modcus = `UPDATE mod_customer SET forename = ?, surename = ?, telephone = ? WHERE id_customer = ?`;
                     const values = [firstname, lastname, telephone, userId];
 
-                    db_TGAT.query(query_update_modcus, values, (err, resultInsert_mc) => {
+                    db_FutureDoctor.query(query_update_modcus, values, (err, resultInsert_mc) => {
                         if (err) {
                             console.error('UPDATE mod_customer ERROR --->', err.message);
                             return res.status(500).json({ message: 'Internal Server Error UPDATE mod_customer ERROR' });
@@ -229,7 +229,7 @@ console.log(userIdToken);
     SELECT * FROM registrations WHERE create_id = ?`;
 
 
-    db_TGAT.query(get_profile_query, [userIdToken], (err, results) => {
+    db_FutureDoctor.query(get_profile_query, [userIdToken], (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
@@ -284,7 +284,7 @@ users_router.put('/profile', verifyToken, (req, res) => {
     WHERE create_id = ?
   `;
 
-    db_TGAT.query(
+    db_FutureDoctor.query(
         update_regis,
         [nationalId, firstName, lastName, phone, gradeLevel, major, school, address, userIdToken],
         (err, results) => {
@@ -334,7 +334,7 @@ users_router.put('/profile/member', (req, res) => {
     WHERE create_id = ?
   `;
 
-    db_TGAT.query(
+    db_FutureDoctor.query(
         update_regis,
         [firstName, lastName, phone, email, gradeLevel, major, school, formattedDate, create_id],
         (err, results) => {
@@ -373,7 +373,7 @@ users_router.get('/log_login', verifyToken, (req, res) => {
     query += ` ORDER BY create_datetime DESC LIMIT ?`;
     params.push(rowLimit);
 
-    db_TGAT.query(query, params, (err, results) => {
+    db_FutureDoctor.query(query, params, (err, results) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเชื่อมต่อ' });
