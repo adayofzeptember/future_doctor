@@ -11,7 +11,7 @@ const { format, differenceInMinutes } = require('date-fns');
 const auth_router = express.Router();
 const app = express();
 
-auth_router.get('/ping', (req, res) => {
+auth_router.get('/pingpong', (req, res) => {
     res.send('pong auth');
 });
 
