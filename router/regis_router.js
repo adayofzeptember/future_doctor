@@ -190,7 +190,7 @@ regis_router.post('/select-package', verifyToken, async (req, res) => {
 
     const gen_unique_link = randomString(10).toUpperCase();
 
-    
+
     // ✅ ดึงเลขล่าสุดเฉพาะ city_code นั้น ๆ
     const select_last_id = `
         SELECT leader_user_id 
@@ -211,19 +211,19 @@ regis_router.post('/select-package', verifyToken, async (req, res) => {
             });
         }
 
-   
+
         let nextNumStr = '000001';
 
         if (results.length > 0) {
-            const lastId = results[0].leader_user_id;  
+            const lastId = results[0].leader_user_id;
 
-             const numPart = lastId.slice(2, lastId.length - city_code.length);  
+            const numPart = lastId.slice(2, lastId.length - city_code.length);
 
             const nextNum = (parseInt(numPart, 10) || 0) + 1;
-            nextNumStr = String(nextNum).padStart(6, '0');  
+            nextNumStr = String(nextNum).padStart(6, '0');
         }
 
-        const gen_leader_id = `26${nextNumStr}${city_code}`;  
+        const gen_leader_id = `26${nextNumStr}${city_code}`;
 
         const insert_application_group = `
             INSERT INTO application_groups 
@@ -775,7 +775,7 @@ regis_router.get('/group/members/print', (req, res) => {
 });
 
 regis_router.get('/ticket/print', (req, res) => {
-    const { member_id, leader_id } = req.query;
+    const { leader_id, member_id } = req.query;
     const query = `SELECT 
     
    user_id,
