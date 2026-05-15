@@ -15,9 +15,9 @@ async function sendMailRegister(email, link, idcustomer, mailVerify, check) {
     });
 
     let mailOptions = {
-      from: 'BeWise Education <no-reply@future.bewise-global.com>',
+      from: 'Future Doctor Summit <no-reply@future.bewise-global.com>',
       to: email,
-      subject: 'ยืนยันอีเมล (Email) Future Doctor Summit 2026',
+      subject: 'ยืนยันอีเมล Future Doctor Summit 2026',
       text: 'Hello ',
       html: `<!doctypehtml>
   <html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -428,7 +428,7 @@ async function sendMailRegisSinglePass(email, id, name, package, province, examD
     });
 
     let mailOptions = {
-      from: 'BeWise Education <no-reply@future.bewise-global.com>',
+      from: 'Future Doctor Summit <no-reply@future.bewise-global.com>',
       to: email,
       subject: `ยืนยันข้อมูลการสมัคร Future Doctor Summit 2026 ของคุณ ${name}`,
       text: 'Hello ',
@@ -1261,7 +1261,7 @@ async function sendMailRegisGroup(email, id, name, package, province, examDate, 
     });
 
     let mailOptions = {
-      from: 'BeWise Education <no-reply@future.bewise-global.com>',
+      from: 'Future Doctor Summit <no-reply@future.bewise-global.com>',
       to: email,
       subject: 'ยืนยันข้อมูลการสมัคร Future Doctor Summit 2026',
       text: 'Hello ',
@@ -2030,7 +2030,7 @@ async function sendMailGroupJoin(email, id, headName, name, province, examDate, 
     });
 
     let mailOptions = {
-      from: 'BeWise Education <no-reply@future.bewise-global.com>',
+      from: 'Future Doctor Summit <no-reply@future.bewise-global.com>',
       to: email,
       subject: `ยืนยันการลงทะเบียน (ในกลุ่มของ ${headName}) สำหรับโครงการ Future Doctor Summit 2026`,
       text: 'Hello ',
@@ -2790,7 +2790,7 @@ async function sendMailOTP(email, otp, name, date) {
     });
 
     let mailOptions = {
-      from: 'BeWise Education <no-reply@future.bewise-global.com>',
+      from: 'Future Doctor Summit <no-reply@future.bewise-global.com>',
       to: email,
       subject: 'รีเซ็ทรหัสผ่าน [BeWise]',
       text: 'Hello ',
